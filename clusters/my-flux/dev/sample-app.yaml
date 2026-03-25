@@ -1,25 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: apache
+  name: sample-app
   namespace: default
   labels:
-    app: apache
+    app: sample-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: apache
+      app: sample-app
   template:
     metadata:
       labels:
-        app: apache
+        app: sample-app
     spec:
       containers:
-      - name: apache
-        image: httpd:2.4
+      - name: sample-app
+        image: yellwinhtut/sample-app:8e0c102b9214901e7fd0141dc3321fa3bc0d2c7e
         ports:
-        - containerPort: 80
+        - containerPort: 3000
         resources:
           requests:
             memory: "64Mi"
@@ -31,16 +31,16 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: apache
+  name: sample-app
   namespace: default
   labels:
-    app: apache
+    app: sample-app
 spec:
   selector:
-    app: apache
+    app: sample-app
   type: NodePort
   ports:
-  - port: 80
-    targetPort: 80
+  - port: 3000
+    targetPort: 3000
     NodePort: 8080
-    name: apache
+    name: sample-app
