@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: sample-app
-        image: yellwinhtut/sample-app:8e0c102b9214901e7fd0141dc3321fa3bc0d2c7e
+        image: yellwinhtut/sample-app:b2ae3e6592948ba798c5e334498f3aaa91a7d916
         ports:
         - containerPort: 3000
         resources:
